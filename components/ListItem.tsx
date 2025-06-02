@@ -26,27 +26,25 @@ export function ListItem(
 
   // This renders our component
   return (
-    <div class="flex items-center justify-between p-4 mb-2 border rounded-lg shadow-sm bg-white">
+    <div class="flex items-center justify-between p-3 mb-1 border border-gray-200 bg-white">
       <div class="flex items-center flex-1">
         {/* Checkbox to mark as complete/incomplete */}
         <input
           type="checkbox"
           checked={reminder.completed}
           onChange={() => onToggleComplete(reminder.id)}
-          class="w-5 h-5 mr-4 accent-green-500"
+          class="w-4 h-4 mr-3"
         />
         <div class="flex flex-col">
           {/* The reminder text - add line-through style if completed */}
           <span
-            class={`text-lg ${
-              reminder.completed ? "line-through text-gray-500" : ""
-            }`}
+            class={`${reminder.completed ? "line-through text-gray-500" : ""}`}
           >
             {reminder.text}
           </span>
           {/* Show the due date if it exists */}
           {formattedDate && (
-            <span class="text-sm text-gray-500">
+            <span class="text-xs text-gray-500">
               Due: {formattedDate}
             </span>
           )}
@@ -55,7 +53,7 @@ export function ListItem(
       {/* Delete button */}
       <Button
         onClick={() => onDelete(reminder.id)}
-        class="px-2 py-1 ml-4 text-white bg-red-500 border-red-500 hover:bg-red-600"
+        class="px-2 py-1 ml-4 text-red-600 border border-gray-300 hover:bg-red-600 hover:text-white"
       >
         Delete
       </Button>

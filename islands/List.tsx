@@ -131,21 +131,21 @@ export default function List({ initialReminders = [] }: ListProps) {
 
   // The JSX that renders our component's UI
   return (
-    <div class="w-full max-w-lg mx-auto">
+    <div class="w-full mx-auto px-4">
       {/* Page title */}
-      <h1 class="mb-6 text-3xl font-bold text-center text-gray-800">
+      <h1 class="mb-6 text-xl text-center text-gray-800 border-b border-gray-200 pb-2">
         Reminders
       </h1>
 
       {/* Form to add new reminders */}
       <form
         onSubmit={addReminder}
-        class="mb-6 p-6 bg-white rounded-lg shadow-md"
+        class="mb-6 p-4 bg-white border border-gray-200"
       >
         <div class="mb-4">
           <label
             for="reminder-text"
-            class="block text-sm font-medium text-gray-700 mb-2"
+            class="block text-sm mb-2"
           >
             Reminder Text
           </label>
@@ -156,13 +156,14 @@ export default function List({ initialReminders = [] }: ListProps) {
             value={newReminderText.value}
             onInput={(e) =>
               newReminderText.value = (e.target as HTMLInputElement).value}
-            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            class="w-full p-2 border border-gray-300 focus:outline-none"
+            autoComplete="off"
           />
         </div>
         <div class="mb-4">
           <label
             for="reminder-date"
-            class="block text-sm font-medium text-gray-700 mb-2"
+            class="block text-sm mb-2"
           >
             Due Date (optional)
           </label>
@@ -172,12 +173,12 @@ export default function List({ initialReminders = [] }: ListProps) {
             value={newReminderDate.value}
             onInput={(e) =>
               newReminderDate.value = (e.target as HTMLInputElement).value}
-            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            class="w-full p-2 border border-gray-300 focus:outline-none"
           />
         </div>
         <Button
           type="submit"
-          class="w-full py-3 text-white bg-green-700 border-green-500 hover:bg-green-600"
+          class="w-full py-2 text-black bg-gray-100 border border-gray-300 hover:bg-gray-200"
         >
           Add Reminder
         </Button>
@@ -187,30 +188,30 @@ export default function List({ initialReminders = [] }: ListProps) {
       <div class="mb-6 flex justify-center space-x-3">
         <Button
           onClick={() => filter.value = "all"}
-          class={`px-5 py-2 font-medium rounded-full ${
+          class={`px-4 py-1 ${
             filter.value === "all"
-              ? "border-green-500 bg-green-100 text-green-700"
-              : "text-gray-700 hover:bg-gray-100"
+              ? "border-b-2 border-gray-800 font-bold"
+              : "text-gray-600 hover:border-gray-300"
           }`}
         >
           All
         </Button>
         <Button
           onClick={() => filter.value = "active"}
-          class={`px-5 py-2 font-medium rounded-full ${
+          class={`px-4 py-1 ${
             filter.value === "active"
-              ? "border-green-500 bg-green-100 text-green-700"
-              : "text-gray-700 hover:bg-gray-100"
+              ? "border-b-1 border-gray-800 font-bold"
+              : "text-gray-600 hover:border-gray-300"
           }`}
         >
           Active
         </Button>
         <Button
           onClick={() => filter.value = "completed"}
-          class={`px-5 py-2 font-medium rounded-full ${
+          class={`px-4 py-1 ${
             filter.value === "completed"
-              ? "border-green-500 bg-green-100 text-green-700"
-              : "text-gray-700 hover:bg-gray-100"
+              ? "border-b-1 border-gray-800 font-bold"
+              : "text-gray-600 hover:border-gray-300"
           }`}
         >
           Completed
@@ -218,11 +219,11 @@ export default function List({ initialReminders = [] }: ListProps) {
       </div>
 
       {/* List of reminders */}
-      <div class="space-y-3">
+      <div class="space-y-1">
         {filteredReminders.value.length === 0
           ? (
             // Show this message when there are no reminders in the current filter
-            <p class="text-center text-gray-500 p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <p class="text-center text-gray-500 p-4 bg-white border border-gray-200">
               No reminders{" "}
               {filter.value !== "all" ? `marked as ${filter.value}` : ""}
             </p>
@@ -242,10 +243,10 @@ export default function List({ initialReminders = [] }: ListProps) {
 
       {/* Show "Clear completed" button only when there are completed reminders */}
       {reminders.value.some((r) => r.completed) && (
-        <div class="mt-5 text-center">
+        <div class="mt-4 text-center">
           <Button
             onClick={clearCompleted}
-            class="text-red-500 border-red-300 hover:bg-red-50 font-medium px-5 py-2"
+            class="text-gray-700 border border-gray-300 hover:bg-gray-100 px-4 py-1"
           >
             Clear completed
           </Button>
@@ -253,10 +254,10 @@ export default function List({ initialReminders = [] }: ListProps) {
       )}
 
       {/* Footer with summary information */}
-      <div class="mt-8 text-center text-sm text-gray-600 pb-4">
-        <span class="font-medium">{reminders.value.length}</span>{" "}
-        reminder{reminders.value.length !== 1 ? "s" : ""} •{"  "}
-        <span class="font-medium">
+      <div class="mt-8 text-center text-xs text-gray-600 pb-4 border-t border-gray-200 pt-2">
+        <span>{reminders.value.length}</span>{" "}
+        reminder{reminders.value.length !== 1 ? "s" : ""} |{"  "}
+        <span>
           {reminders.value.filter((r) => !r.completed).length}
         </span>{" "}
         active
