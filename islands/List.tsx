@@ -27,7 +27,9 @@ export default function List({ initialReminders = [] }: ListProps) {
       if (savedReminders) {
         // If we found saved data, parse it then convert date strings back to Date objects
         const parsedReminders = JSON.parse(savedReminders);
-        const remindersWithDates = parsedReminders.map((reminder: Reminder) => ({
+        const remindersWithDates = parsedReminders.map((
+          reminder: Reminder,
+        ) => ({
           ...reminder,
           dueDate: reminder.dueDate ? new Date(reminder.dueDate) : undefined,
         }));
@@ -64,7 +66,7 @@ export default function List({ initialReminders = [] }: ListProps) {
         filtered = [...reminders.value];
         break;
     }
-    
+
     // Then, sort them by due date (reminders with due dates first, then by date)
     return filtered.sort((a, b) => {
       // If neither has a due date, maintain original order
@@ -134,7 +136,10 @@ export default function List({ initialReminders = [] }: ListProps) {
       {/* Form to add new reminders */}
       <form onSubmit={addReminder} class="mb-6 p-4 bg-white rounded-lg shadow">
         <div class="mb-4">
-          <label for="reminder-text" class="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            for="reminder-text"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
             Reminder Text
           </label>
           <input
@@ -148,7 +153,10 @@ export default function List({ initialReminders = [] }: ListProps) {
           />
         </div>
         <div class="mb-4">
-          <label for="reminder-date" class="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            for="reminder-date"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
             Due Date (optional)
           </label>
           <input
