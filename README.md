@@ -1,39 +1,16 @@
-# Deno Dev Container for GitHub Codespaces
+# Fresh project
 
-This repository is configured to work with GitHub Codespaces using a Deno development environment.
+Your new Fresh project is ready to go. You can follow the Fresh "Getting
+Started" guide here: https://fresh.deno.dev/docs/getting-started
 
-## Getting Started
+### Usage
 
-1. Open this repository in GitHub Codespaces
-2. The dev container will automatically set up an environment with:
-   - Node.js & TypeScript
-   - Deno runtime
-   - VS Code extensions for Deno development
+Make sure to install Deno: https://deno.land/manual/getting_started/installation
 
-## Running the Sample Server
+Then start the project:
 
-To run the included sample server:
-
-```bash
-deno run --allow-net server.ts
+```
+deno task start
 ```
 
-The server will be available at http://localhost:8000
-
-## Features Included
-
-- Deno runtime via GitHub Releases
-- TypeScript support out-of-the-box
-- VS Code extensions:
-  - Deno (official extension)
-  - Deno Standard Library Snippets
-  - Prettier code formatter
-
-## Development
-
-This environment is ready for Deno development with proper TypeScript integration and linting support.
-
-## Additional Resources
-
-- [Deno Documentation](https://deno.land/manual)
-- [Deno Standard Library](https://deno.land/std)
+This will watch the project directory and restart as necessary.
